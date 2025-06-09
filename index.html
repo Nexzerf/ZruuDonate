@@ -52,6 +52,7 @@
     <i class="fa-solid fa-upload"></i> แนบสลิปของคุณ
   </label>
   <input type="file" id="slipUpload" accept="image/*" />
+<span id="file-name" style="display: block; margin-top: 10px; color: #93c5fd;"></span>
 
   <button onclick="submitSlip()" class="submit-slip-btn">
     <i class="fa-solid fa-paper-plane"></i> ส่งสลิป
@@ -83,5 +84,10 @@
   <!-- JS -->
   <script src="script.js"></script>
 </body>
-
+<script>
+  document.getElementById('file-upload').addEventListener('change', function(event) {
+    const fileName = event.target.files.length > 0 ? event.target.files[0].name : '';
+    document.getElementById('file-name').textContent = fileName ? `📂 ไฟล์ที่เลือก: ${fileName}` : '';
+  });
+</script>
 </html>

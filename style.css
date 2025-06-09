@@ -8,8 +8,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  padding: 20px;
 }
 
 * {
@@ -40,7 +40,6 @@ p {
 }
 
 /* ===== DONATE BUTTON ===== */
-/* ปุ่มหลัก */
 .donate-button {
   font-family: 'Prompt', sans-serif;
   font-weight: 600;
@@ -61,7 +60,6 @@ p {
   gap: 10px;
 }
 
-/* จรวด */
 .rocket-container {
   position: relative;
   display: inline-block;
@@ -73,7 +71,6 @@ p {
   color: white;
 }
 
-/* ไฟท้าย */
 .flame {
   position: absolute;
   bottom: -8px;
@@ -88,7 +85,6 @@ p {
   pointer-events: none;
 }
 
-/* Hover effect: ปุ่ม + ระเบิด particle */
 .donate-button::after {
   content: "";
   position: absolute;
@@ -109,19 +105,6 @@ p {
   opacity: 1;
 }
 
-/* Animation */
-@keyframes floatRocket {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes flamePulse {
-  from { height: 10px; opacity: 0.6; }
-  to { height: 14px; opacity: 1; }
-}
-
-
 /* ===== MODAL OVERLAY ===== */
 .modal {
   display: none;
@@ -132,6 +115,8 @@ p {
   height: 100%;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(4px);
+  padding: 15px;
+  overflow-y: auto;
 }
 
 /* ===== MODAL CONTENT ===== */
@@ -139,7 +124,7 @@ p {
   background: #0f172a;
   padding: 30px 20px;
   border-radius: 18px;
-  width: 90%;
+  width: 100%;
   max-width: 700px;
   margin: 80px auto;
   animation: fadeIn 0.3s ease-in-out;
@@ -166,8 +151,8 @@ p {
 /* ===== QR Grid ===== */
 .qr-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
   padding: 20px 0;
 }
 
@@ -176,6 +161,7 @@ p {
   border-radius: 14px;
   padding: 16px;
   transition: transform 0.3s ease;
+  font-size: 16px;
 }
 
 .qr-box:hover {
@@ -183,17 +169,13 @@ p {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
-.qr-box img {
-  width: 120px;
-  margin-bottom: 10px;
-}
-
 .qr-box p {
   color: #93c5fd;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   margin-top: 5px;
 }
+
 .dynamic-content {
   margin-top: 30px;
   background: #1e293b;
@@ -201,15 +183,38 @@ p {
   padding: 25px 20px;
   color: #93c5fd;
   font-weight: 600;
-  font-size: 18px;
-  min-height: 140px;
+  font-size: 16px;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: text;
+  flex-wrap: wrap;
 }
 
-/* อัปโหลดสลิป */
+/* ===== FILE UPLOAD ===== */
+input[type="file"] {
+  display: none;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #0f172a, #2563eb);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.upload-label:hover {
+  background: linear-gradient(to right, #1e3a8a, #3b82f6);
+  transform: scale(1.03);
+}
+
 .submit-slip-btn {
   display: inline-block;
   padding: 12px 30px;
@@ -223,19 +228,19 @@ p {
   font-family: 'Prompt', sans-serif;
   font-size: 16px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+}
+
+.submit-slip-btn:hover {
+  background: linear-gradient(to right, #3b82f6, #0f172a);
+  transform: scale(1.05);
 }
 
 .submit-slip-btn i {
   margin-right: 8px;
 }
 
-.submit-slip-btn:hover {
-  background: linear-gradient(to right, #3b82f6, #0f172a);
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-
+/* ===== POPUP SUCCESS ===== */
 .popup-container {
   display: none;
   position: fixed;
@@ -245,7 +250,7 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
-  font-family: 'Prompt', sans-serif;
+  padding: 20px;
 }
 
 .popup-content {
@@ -253,9 +258,8 @@ p {
   padding: 40px 30px;
   border-radius: 20px;
   text-align: center;
-  position: relative;
   max-width: 400px;
-  width: 90%;
+  width: 100%;
   animation: fadeInScale 0.4s ease;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
@@ -300,7 +304,6 @@ p {
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
-  font-family: 'Prompt', sans-serif;
 }
 
 .close-btn:hover {
@@ -308,7 +311,29 @@ p {
   transform: scale(1.05);
 }
 
-/* Animations */
+/* ===== ANIMATIONS ===== */
+@keyframes floatRocket {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes flamePulse {
+  from { height: 10px; opacity: 0.6; }
+  to { height: 14px; opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -331,51 +356,30 @@ p {
   }
 }
 
-
-/* ปุ่ม Choose File แบบ Custom */
-input[type="file"] {
-  display: none;
-}
-
-.upload-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background: linear-gradient(to right, #0f172a, #2563eb);
-  color: white;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Prompt', sans-serif;
-  margin-bottom: 10px;
-}
-
-.upload-label:hover {
-  background: linear-gradient(to right, #1e3a8a, #3b82f6);
-  transform: scale(1.03);
-}
-
-
-
-/* ===== ANIMATION ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ===== RESPONSIVE ===== */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   h1 {
-    font-size: 26px;
+    font-size: 28px;
   }
   .donate-button {
     font-size: 16px;
     padding: 12px 24px;
   }
+  .qr-grid {
+    grid-template-columns: 1fr;
+  }
+  .dynamic-content {
+    font-size: 15px;
+    min-height: 100px;
+  }
+  .modal-content {
+    padding: 20px 15px;
+  }
+}
+#file-name {
+  font-size: 14px;
+  color: #93c5fd;
+  margin-top: 8px;
+  font-weight: 500;
+  word-break: break-word;
 }
