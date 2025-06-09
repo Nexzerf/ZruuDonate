@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>สนับสนุนเรา | Donate</title>
+
+  <!-- Font Prompt -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <img src="image/Z.png" class="logo" alt="Logo" />
+  <h1>Zruu Donate</h1>
+  <p>เพียงสแกน QR ด้านล่างเพื่อสนับสนุนเรา</p>
+<button onclick="openModal()" class="donate-button">
+  สนับสนุนตอนนี้ 
+  <span class="rocket-container">
+    <i class="fa-solid fa-rocket"></i>
+    <span class="flame"></span> <!-- ไฟท้าย -->
+  </span>
+</button>
+
+</header>
+
+ 
+  <!-- Modal -->
+  <div class="modal" id="donateModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>เลือกช่องทางการสนับสนุน</h2>
+
+      <div class="qr-grid">
+        <div class="qr-box" onclick="showPromptPay()">
+          <i class="fa-solid fa-qrcode"></i> PromptPay
+        </div>
+
+        <div class="qr-box" onclick="showKbankInfo()">
+          <i class="fa-solid fa-building-columns"></i>บัญชีธนาคาร
+          <p><i class="fa-solid fa-building-columns"></i> ธ.กสิกรไทย</p>
+        </div>
+      </div>
+<!-- อัปโหลดสลิป -->
+<div class="slip-upload-section">
+  <label for="slipUpload" class="upload-label">
+    <i class="fa-solid fa-upload"></i> แนบสลิปของคุณ
+  </label>
+  <input type="file" id="slipUpload" accept="image/*" />
+
+  <button onclick="submitSlip()" class="submit-slip-btn">
+    <i class="fa-solid fa-paper-plane"></i> ส่งสลิป
+  </button>
+</div>
+
+
+<!-- Popup ขอบคุณ -->
+<div id="successPopup" class="popup-container">
+  <div class="popup-content">
+    <div class="checkmark">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <h2>ขอบคุณสำหรับการสนับสนุน</h2>
+    <p>เราจะตรวจสอบสลิปของคุณโดยเร็วที่สุด</p>
+    <button onclick="closePopup()" class="close-btn">ปิด</button>
+  </div>
+</div>
+
+
+<!-- เสียง -->
+<audio id="successSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_20a5e6032b.mp3?filename=success-1-6297.mp3"></audio>
+
+      <!-- Container แสดงข้อมูล dynamic -->
+      <div id="dynamicContent" class="dynamic-content"></div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
