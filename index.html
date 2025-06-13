@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zruu Donate</title>
+  <title>NAMAING Donate</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/32.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet" />
@@ -92,11 +92,11 @@
 </head>
 <body>
 <header>
-  <img src="image/Z.png" class="logo" alt="Logo" />
-  <h1>Zruu Donate</h1>
-  <p>เพียงสแกน QR ด้านล่างเพื่อสนับสนุนเรา</p>
+  
+  <h1>จ่ายเงินให้ NAMA1N9</h1>
+  <p>เพียงกดปุ่มโอนแล้วเลือกช่องทางการโอนได้เลยค้าบ</p>
   <button onclick="openModal()" class="donate-button">
-    สนับสนุนตอนนี้ 
+    โอนเลยรออะไร ปิ้ววว
     <span class="rocket-container">
       <i class="fa-solid fa-rocket"></i>
       <span class="flame"></span> <!-- ไฟท้าย -->
@@ -108,7 +108,7 @@
 <div class="modal" id="donateModal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-    <h2>เลือกช่องทางการสนับสนุน</h2>
+    <h2>เลือกช่องทางการโอนเงิน</h2>
 
     <div class="qr-grid">
       <div class="qr-box" onclick="showPromptPay()">
@@ -116,20 +116,20 @@
       </div>
 
       <div class="qr-box" onclick="showKbankInfo()">
-        <i class="fa-solid fa-building-columns"></i>บัญชีธนาคาร
-        <p><i class="fa-solid fa-building-columns"></i> ธ.กสิกรไทย</p>
+        <i class="fa-solid fa-building-columns"></i> บัญชีธนาคาร
+       
       </div>
     </div>
 
     <!-- อัปโหลดสลิป -->
     <div class="slip-upload-section">
       <label for="slipUpload" class="upload-label">
-        <i class="fa-solid fa-upload"></i> แนบสลิปของคุณ
+        <i class="fa-solid fa-upload"></i> แนบสลิปตรงนี้
       </label>
       <input type="file" id="slipUpload" accept="image/*" />
       <p class="qr-requirement-text">
         <i class="fa-solid fa-info-circle"></i>
-        ต้องเป็นสลิปที่มี QR Code ในรูปเท่านั้น
+        ต้องเป็นสลิปที่มี QR Code ในรูปเท่านั้นน้าา
       </p>
       <span id="file-name" style="display: block; margin-top: 10px; color: #93c5fd; font-size: 14px;"></span>
       
@@ -148,7 +148,7 @@
           <i class="fa-solid fa-check"></i>
         </div>
         <h2>ขอบคุณสำหรับการสนับสนุน</h2>
-        <p>เราจะตรวจสอบสลิปของคุณโดยเร็วที่สุด</p>
+        <p>ทางที่ดีส่งสลิปย้ำมาในแชตอีกรอบก็ได้งับ</p>
         <button onclick="closePopup()" class="close-btn">ปิด</button>
       </div>
     </div>

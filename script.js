@@ -1,3 +1,5 @@
+// scriptt.js
+
 let hasValidQR = false;
 
 function openModal() {
@@ -37,7 +39,7 @@ function showPromptPay() {
   // แสดงฟอร์มให้ใส่จำนวนเงินก่อน
   container.innerHTML = `
     <div class="amount-input-section">
-      <h3>PromptPay</h3>
+      <h3>จ่ายด้วยพร้อมเพย์</h3>
       <p class="amount-label">จำนวนเงินที่ต้องการจะโอน</p>
       <div class="amount-input-container">
         <input type="number" id="donateAmount" placeholder="0" min="0" class="amount-input" />
@@ -53,7 +55,7 @@ function showPromptPay() {
 // สร้าง QR Code จาก API
 async function generatePromptPayQR() {
   const container = document.getElementById("dynamicContent");
-  const promptpay = '0898879412'; // เบอร์ PromptPay ของคุณ
+  const promptpay = '0951386174'; // เบอร์ PromptPay ของคุณ
   const amountInput = document.getElementById('donateAmount');
   const amount = amountInput ? parseFloat(amountInput.value) || 0 : 0;
   
@@ -74,7 +76,7 @@ async function generatePromptPayQR() {
         <div class="qr-result-container">
           <img src="${data.qrImage}" alt="PromptPay QR" class="qr-image" />
           <div class="qr-info">
-            <p class="promptpay-number">เบอร์ PromptPay: ${promptpay}</p>
+            <p class="promptpay-number">เบอร์ PromptPay : ${promptpay}</p>
             ${amount > 0 ? 
               `<p class="amount-info amount-set">จำนวน: ${amount.toLocaleString()} บาท</p>` : 
               '<p class="amount-info amount-open">จำนวนเงิน: ให้ผู้โอนใส่เอง</p>'
@@ -90,7 +92,7 @@ async function generatePromptPayQR() {
       container.innerHTML = `
         <div class="error-container">
           <i class="fa-solid fa-exclamation-triangle error-icon"></i>
-          <p class="error-text">เกิดข้อผิดพลาด: ${errorData.error || 'ไม่สามารถสร้าง QR Code ได้'}</p>
+          <p class="error-text">${'โปรดระบุจำนวนเงินก่อนโอน' || 'ไม่สามารถสร้าง QR Code ได้'}</p>
           <button onclick="showPromptPay()" class="retry-btn">ลองใหม่</button>
         </div>
       `;
@@ -114,23 +116,23 @@ function showKbankInfo() {
   container.innerHTML = `
     <div class="bank-info-container">
       <div class="bank-header">
-        <img src="icons/ksk.png" alt="Kasikorn Bank" class="bank-logo" />
+        <img src="assets/ksk.png" alt="Kasikorn Bank" class="bank-logo" />
         <h3>ธนาคารกสิกรไทย</h3>
       </div>
       <div class="bank-details">
         <p class="bank-detail-item">
           <i class="fa-solid fa-credit-card"></i>
-          <span class="detail-label">เลขที่บัญชี:</span>
-          <strong>xxxxxxxxxx</strong>
+          <span class="detail-label">เลขที่บัญชี :</span>
+          <strong>1261900671</strong>
         </p>
         <p class="bank-detail-item">
           <i class="fa-solid fa-user"></i>
-          <span class="detail-label">ชื่อบัญชี:</span>
-          <strong>เซบาสเตียน ศาสตราวุธากร</strong>
+          <span class="detail-label">ชื่อบัญชี :</span>
+          <strong>ภานิชา ศ.</strong>
         </p>
         <p class="bank-detail-item">
           <i class="fa-solid fa-building-columns"></i>
-          <span class="detail-label">ธนาคาร:</span>
+          <span class="detail-label">ธนาคาร :</span>
           <strong>กสิกรไทย</strong>
         </p>
       </div>
@@ -172,8 +174,7 @@ function validateQRCode(file) {
           // พบ QR Code
           qrStatus.innerHTML = `
             <i class="fa-solid fa-check-circle"></i>
-            ✅ พบ QR Code ในรูปภาพแล้ว
-            <div class="qr-details">ข้อมูล QR: ${qrCode.data.substring(0, 50)}${qrCode.data.length > 50 ? '...' : ''}</div>
+            ตรวจพบ QR Code ในรูปภาพ
           `;
           qrStatus.className = "qr-status valid";
           resolve(true);
@@ -181,8 +182,7 @@ function validateQRCode(file) {
           // ไม่พบ QR Code
           qrStatus.innerHTML = `
             <i class="fa-solid fa-exclamation-triangle"></i>
-            ❌ ไม่พบ QR Code ในรูปภาพ
-            <div class="qr-details">กรุณาเลือกรูปสลิปที่มี QR Code ชัดเจน</div>
+            โปรดเลือกรูปสลิปที่มี QR Code ชัดเจน
           `;
           qrStatus.className = "qr-status invalid";
           resolve(false);
@@ -192,8 +192,7 @@ function validateQRCode(file) {
       img.onerror = function() {
         qrStatus.innerHTML = `
           <i class="fa-solid fa-exclamation-triangle"></i>
-          ❌ ไม่สามารถอ่านรูปภาพได้
-          <div class="qr-details">กรุณาเลือกไฟล์รูปภาพที่ถูกต้อง</div>
+          โปรดเลือกไฟล์รูปภาพที่ถูกต้อง
         `;
         qrStatus.className = "qr-status invalid";
         resolve(false);
@@ -205,7 +204,7 @@ function validateQRCode(file) {
     reader.onerror = function() {
       qrStatus.innerHTML = `
         <i class="fa-solid fa-exclamation-triangle"></i>
-        ❌ ไม่สามารถอ่านไฟล์ได้
+        ไม่สามารถอ่านไฟล์ได้
       `;
       qrStatus.className = "qr-status invalid";
       resolve(false);
@@ -218,12 +217,12 @@ function validateQRCode(file) {
 function submitSlip() {
   const fileInput = document.getElementById("slipUpload");
   if (!fileInput.files.length) {
-    alert("กรุณาแนบสลิปก่อนส่ง");
+    alert("แนบสลิปก่อนส่งด้วย");
     return;
   }
 
   if (!hasValidQR) {
-    alert("กรุณาแนบสลิปที่มี QR Code");
+    alert("แนบสลิปที่มี QR Code นะ");
     return;
   }
 
@@ -266,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const qrStatus = document.getElementById("qr-status");
         qrStatus.innerHTML = `
           <i class="fa-solid fa-exclamation-triangle"></i>
-          ❌ กรุณาเลือกไฟล์รูปภาพเท่านั้น
+          ❌ เลือกไฟล์รูปภาพเท่านั้นน้าา
         `;
         qrStatus.className = "qr-status invalid";
         qrStatus.style.display = "block";
